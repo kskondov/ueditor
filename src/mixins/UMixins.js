@@ -35,7 +35,7 @@ export const UMixins = {
       return property
     },
     async getThumbnails() {
-      const thumbs = await document.querySelectorAll('.vue-dropzone')
+      const thumbs = await document.querySelectorAll('.image-editable')
       for (let i = 0; i < thumbs.length; i++) {
         let thumbName = thumbs[i].dataset.name
         let splittedThumbs = thumbName.split('.')

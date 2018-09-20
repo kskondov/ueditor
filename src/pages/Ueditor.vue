@@ -2,30 +2,26 @@
   <div>
     <button
       @click="stateChange(false);"
-      :class="{ active: !isActive }"
+      v-show="isActive"
       class="edit">Edit edit</button>
     <button
       @click="stateChange(true);"
-      :class="{ active: isActive }"
+      v-show="!isActive"
       class="close-editor">Close editor</button>
-      <Header
-      :removeImage="fire"
-      @done="fire=false"
-      />
-      <u-image-editable>
-          <img data-name=name :src = editedContent.name >
+      <u-image-editable data-name=name>
+          <img :src = editedContent.name>
       </u-image-editable>
-      <u-text-editable>
-        <div data-name=text1>{{editedContent.text1}}</div>
+      <u-text-editable data-name=text1>
+        <div>{{editedContent.text1}}</div>
       </u-text-editable>
       <div>
-        <u-text-editable>
-          <div data-name=text2>{{editedContent.text2}}</div>
+        <u-text-editable data-name=text2>
+          <div>{{editedContent.text2}}</div>
         </u-text-editable>
-          <u-text-editable>
-          <div data-name=text3>{{editedContent.text3}}</div>
-          <u-text-editable>
-          <div data-name=text4>{{editedContent.text4}}</div>
+          <u-text-editable data-name=text3>
+          <div >{{editedContent.text3}}</div>
+          <u-text-editable data-name=text4>
+          <div>{{editedContent.text4}}</div>
           </u-text-editable>
         </u-text-editable>
       </div>
@@ -59,6 +55,12 @@ export default {
   computed: {
     ...mapGetters(['editedContent', 'isActive', 'dispatchOnce']),
     ...mapActions(['saveEditedContent', 'changeActive', 'fetchEditedContent'])
+  },
+  mounted (){
+    this.getThumbnails()
+  },
+  updated (){
+    this.getThumbnails()
   },
   methods: {
     async imageSave (state) {
@@ -108,9 +110,6 @@ export default {
 <style lang="css" scoped>
 .container{
   z-index: 2;
-}
-.active{
-  display: none;
 }
 .dropzone{
   height: 100%;

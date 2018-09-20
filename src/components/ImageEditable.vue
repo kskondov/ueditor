@@ -1,14 +1,15 @@
 <template>
     <div class='image-editable'>
       <vue-dropzone
-        v-if="!isActive"
-        :class="{ active: isActive }"
+        v-show="!isActive"
         ref="myVueDropzone" id="imageTest"
         :options="dropzoneOptions"
       ></vue-dropzone>
+      <div v-show="isActive">
       <slot>
 
       </slot>
+      </div>
     </div>
 </template>
 
