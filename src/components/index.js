@@ -1,4 +1,6 @@
 import 'vue2-dropzone/dist/vue2Dropzone.css';
+import { UMixins } from '@/mixins/UMixins'
 
-export { default as ImageEditable } from './ImageEditable.vue';
-export { default as UFlickitySlide } from './TextEditable.vue';
+
+export { default as UImageEditable } from './ImageEditable.vue';
+export { default as UTextEditable } from './TextEditable.vue';

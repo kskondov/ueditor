@@ -22,7 +22,7 @@ export const UMixins = {
         }
       }
       obj[props[i]] = value
-      this.$store.dispatch('saveEditedContent', this.editedContent)
+      // this.$store.dispatch('saveEditedContent', this.editedContent)
       return obj
     },
     getProperty(propertyName, object) {

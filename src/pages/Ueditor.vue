@@ -12,21 +12,25 @@
       :removeImage="fire"
       @done="fire=false"
       />
-      <u-image-editable/>
-      <u-text-editable/>
+      <u-image-editable>
+          <img data-name=name :src = editedContent.name >
+      </u-image-editable>
+      <u-text-editable>
+        <div contenteditable="false">Name</div>
+      </u-text-editable>
   </div>
 </template>
 <script>
   import { mapGetters, mapActions } from 'vuex'
   import { UMixins } from '@/mixins/UMixins'
-  import uImageEditable from '@/components/ImageEditable'
-  import uTextEditable from '@/components/TextEditable'
+  import { UImageEditable } from '@/components/index'
+  import { UTextEditable } from '@/components/index'
 
 export default {
   mixins: [UMixins],
   components: {
-    uImageEditable,
-    uTextEditable,
+    UImageEditable,
+    UTextEditable,
   },
   data: () => ({
     fire: false,
@@ -51,7 +55,7 @@ export default {
         for (let i = 0; i < document.querySelectorAll('[data-dz-thumbnail]').length; i += 1) {
           const elem = {
             data: await document.querySelectorAll('[data-dz-thumbnail]')[i].src,
-            name: await document.querySelectorAll('[data-dz-thumbnail]')[i].closest('[data-name]').dataset.name
+            name: await document.querySelectorAll('[data-name]')[i].dataset.name
           }
           this.saveContent(elem)
         }
@@ -77,7 +81,7 @@ export default {
     },
     async saveContent (elem) {
       if (elem) {
-        await this.GetPropByString(this.activity, elem.name, elem.data)
+        await this.GetPropByString(this.editedContent, elem.name, elem.data)
       } else {
         console.log('NO CHANGE')
       }
@@ -118,5 +122,9 @@ export default {
 .close-editor{
   background: green;
 }
+.text-editable, .image-editable{
+  padding-left: 400px
+}
+
 </style>
 

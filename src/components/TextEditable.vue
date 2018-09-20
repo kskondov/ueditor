@@ -1,6 +1,8 @@
 <template>
-  <div contenteditable="false" data-name=name>
-    {{editedContent.name}}
-  </div>
+<div class='text-editable'>
+  <slot>
+
+  </slot>
+</div>
 </template>
 
