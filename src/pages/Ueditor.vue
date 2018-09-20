@@ -16,8 +16,19 @@
           <img data-name=name :src = editedContent.name >
       </u-image-editable>
       <u-text-editable>
-        <div contenteditable="false">Name</div>
+        <div data-name=text1>{{editedContent.text1}}</div>
       </u-text-editable>
+      <div>
+        <u-text-editable>
+          <div data-name=text2>{{editedContent.text2}}</div>
+        </u-text-editable>
+          <u-text-editable>
+          <div data-name=text3>{{editedContent.text3}}</div>
+          <u-text-editable>
+          <div data-name=text4>{{editedContent.text4}}</div>
+          </u-text-editable>
+        </u-text-editable>
+      </div>
   </div>
 </template>
 <script>
